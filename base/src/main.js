@@ -22,6 +22,12 @@ registerMicroApps([
     container: '#subapp',
     activeRule: '/app-vue3',
   },
+  {
+    name: 'app-react', // app name registered
+    entry: '//localhost:8003',
+    container: '#subapp',
+    activeRule: '/app-react',
+  },
   // {
   //   name: 'vue3 app',
   //   entry: { scripts: ['//localhost:7100/main.js'] },
@@ -29,12 +35,12 @@ registerMicroApps([
   //   activeRule: '/yourActiveRule2',
   // },
 ]);
-start();
-// start({
-//   sandbox: {
-//     experimentalStyleIsolation: true
-//   }
-// });
+// start();
+start({
+  sandbox: {
+    experimentalStyleIsolation: true
+  }
+});
 
 new Vue({
   router,
