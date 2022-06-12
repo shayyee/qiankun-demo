@@ -22,19 +22,24 @@ registerMicroApps([
     container: '#subapp',
     activeRule: '/app-vue3',
   },
-  // {
-  //   name: 'vue3 app',
-  //   entry: { scripts: ['//localhost:7100/main.js'] },
-  //   container: '#yourContainer2',
-  //   activeRule: '/yourActiveRule2',
-  // },
-]);
-start();
-// start({
-//   sandbox: {
-//     experimentalStyleIsolation: true
-//   }
-// });
+  {
+    name: 'app-react', // app name registered
+    entry: '//localhost:8003',
+    container: '#subapp',
+    activeRule: '/app-react',
+  }
+], {
+  beforeLoad: () => {console.log('加载前')},
+  beforeMount:() => {console.log('挂载前')},
+  afterMount:() => {console.log('挂载后')},
+  beforeUnmount:() => {console.log('卸载前')},
+  afterUnmount:() => {console.log('卸载后')},
+});
+start({
+  sandbox: {
+    experimentalStyleIsolation: true
+  }
+});
 
 new Vue({
   router,

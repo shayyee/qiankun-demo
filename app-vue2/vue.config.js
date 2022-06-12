@@ -1,8 +1,8 @@
 const { defineConfig } = require('@vue/cli-service')
-const { name } = require('./package');
 
 module.exports = defineConfig({
   transpileDependencies: true,
+  publicPath: '//localhost:8001/',
   devServer: {
     port: 8001,
     headers: {
@@ -13,9 +13,8 @@ module.exports = defineConfig({
   configureWebpack: {
     output: {
       // 把子应用打包成 umd 库格式
-      library: `${name}-[name]`,
-      libraryTarget: 'umd',
-      chunkLoadingGlobal: `webpackJsonp_${name}`,
+      library: 'app-vue2',
+      libraryTarget: 'umd'
     },
   },
 })

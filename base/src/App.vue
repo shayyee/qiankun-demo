@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="mainapp">
     <el-menu :router="true" mode="horizontal">
       <!--基座中可以放自己的路由-->
       <el-menu-item index="/">Home</el-menu-item>
@@ -7,7 +7,7 @@
       <!--引用其他子应用-->
       <el-menu-item index="/app-vue2">vue2应用</el-menu-item>
       <el-menu-item index="/app-vue3">vue3应用</el-menu-item>
-<!--      <el-menu-item index="/react">react应用</el-menu-item>-->
+      <el-menu-item index="/app-react">react应用</el-menu-item>
     </el-menu>
     <router-view></router-view>
     <div id="subapp"></div>
