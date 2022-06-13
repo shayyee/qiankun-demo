@@ -3,11 +3,16 @@ import App from './App.vue'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import { registerMicroApps, start } from 'qiankun';
+import { registerMicroApps, start, runAfterFirstMounted, initGlobalState, setDefaultMountApp} from 'qiankun';
 
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)
+
+new Vue({
+  router,
+  render: h => h(App),
+}).$mount('#app')
 
 registerMicroApps([
   {
@@ -35,13 +40,30 @@ registerMicroApps([
   beforeUnmount:() => {console.log('卸载前')},
   afterUnmount:() => {console.log('卸载后')},
 });
+
+const { onGlobalStateChange, setGlobalState } = initGlobalState({
+  user: 'qiankun',
+});
+
+onGlobalStateChange(
+    (value, prev) => console.log('[onGlobalStateChange - master]:', value, prev)
+);
+
+setGlobalState({
+  ignore: 'master',
+  user: {
+    name: 'master',
+  },
+});
+// 设置默认进入的子应用
+setDefaultMountApp('/app-vue3');
+
 start({
   sandbox: {
     experimentalStyleIsolation: true
   }
 });
+runAfterFirstMounted(() => {
+  console.log('[MainApp] first app mounted');
+});
 
-new Vue({
-  router,
-  render: h => h(App),
-}).$mount('#app')
