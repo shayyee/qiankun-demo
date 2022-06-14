@@ -2,7 +2,7 @@ const { defineConfig } = require('@vue/cli-service')
 
 module.exports = defineConfig({
   transpileDependencies: true,
-  publicPath: '//localhost:8001/',
+  // publicPath: '//localhost:8001/',
   devServer: {
     port: 8001,
     headers: {

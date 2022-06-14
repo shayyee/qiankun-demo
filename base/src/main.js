@@ -3,7 +3,8 @@ import App from './App.vue'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import { registerMicroApps, start, runAfterFirstMounted, initGlobalState, setDefaultMountApp} from 'qiankun';
+// import { registerMicroApps, start} from 'qiankun';
+import { registerMicroApps, start} from './micro-cli';
 
 Vue.config.productionTip = false
 
@@ -33,37 +34,12 @@ registerMicroApps([
     container: '#subapp',
     activeRule: '/app-react',
   }
-], {
-  beforeLoad: () => {console.log('加载前')},
-  beforeMount:() => {console.log('挂载前')},
-  afterMount:() => {console.log('挂载后')},
-  beforeUnmount:() => {console.log('卸载前')},
-  afterUnmount:() => {console.log('卸载后')},
-});
+]);
 
-const { onGlobalStateChange, setGlobalState } = initGlobalState({
-  user: 'qiankun',
-});
-
-onGlobalStateChange(
-    (value, prev) => console.log('[onGlobalStateChange - master]:', value, prev)
-);
-
-setGlobalState({
-  ignore: 'master',
-  user: {
-    name: 'master',
-  },
-});
-// 设置默认进入的子应用
-setDefaultMountApp('/app-vue3');
 
 start({
   sandbox: {
     experimentalStyleIsolation: true
   }
-});
-runAfterFirstMounted(() => {
-  console.log('[MainApp] first app mounted');
 });
 
