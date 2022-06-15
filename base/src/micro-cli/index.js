@@ -6,7 +6,6 @@ let _apps = []
 export const getApps = () => _apps
 export const registerMicroApps = (apps) => {
     // 获取apps注册列表
-    console.log(apps)
     _apps = apps
 }
 

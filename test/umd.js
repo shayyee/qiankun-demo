@@ -892,7 +892,6 @@
         /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
         /******/
         /******/ 	return __webpack_exports__;
-        /******/ })()
-        ;
+        /******/ })();
 });
 //# sourceMappingURL=app-legacy.b541f524.js.map

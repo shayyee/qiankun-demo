@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        p {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<p>aaa</p>
+<div id="subapp"></div>
+<script>
+    let sub_container = document.getElementById('subapp')
+    let shadow = sub_container.attachShadow({mode: 'open'});
+    shadow.innerHTML = `
+        <p>bbb</p>
+        <style>
+            p{color:red;}
+        </style>
+       `
+</script>
+</body>
+</html>

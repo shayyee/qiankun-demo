@@ -29,6 +29,7 @@ export const handleRouter = async () => {
     window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ = app.entry + '/'
 
     const appExports = await execScripts()
+
     app.bootstrap = appExports.bootstrap
     app.mount = appExports.mount
     app.unmount = appExports.unmount

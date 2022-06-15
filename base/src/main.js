@@ -3,8 +3,8 @@ import App from './App.vue'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-// import { registerMicroApps, start} from 'qiankun';
-import { registerMicroApps, start} from './micro-cli';
+import { registerMicroApps, start} from 'qiankun';
+// import { registerMicroApps, start} from './micro-cli';
 
 Vue.config.productionTip = false
 
