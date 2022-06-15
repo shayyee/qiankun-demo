@@ -1,8 +1,8 @@
 import {fetchResource} from "@/micro-cli/fetch-resource";
 
-export const importHTML = async (url) => {
+export const importHTML = async ({name, entry}) => {
     const template = document.createElement('div')
-    const html = await fetchResource(url)
+    const html = await fetchResource(entry)
     template.innerHTML = html
     // 获取所有script标签的代码
     const scripts = template.querySelectorAll('script')
@@ -14,7 +14,7 @@ export const importHTML = async (url) => {
             if(!src) {
                 return Promise.resolve(script.innerHTML)
             } else {
-                return fetchResource(src.startsWith('http') ? src : `${url}${src}`)
+                return fetchResource(src.startsWith('http') ? src : `${entry}${src}`)
             }
         }))
     }

@@ -18,16 +18,16 @@ export const handleRouter = async () => {
     //    请求获取子应用的HTML CSS JS
     // const html = await fetch(app.entry).then(res => res.text())
     // // console.log(html)
-    debugger
     const container = document.querySelector(app.container)
     // container.innerHTML = html
-    const {template, getExternalScripts, execScripts} = await importHTML(app.entry)
+    const {template, getExternalScripts, execScripts} = await importHTML(app)
 
     container.appendChild(template)
 
     // 配置全局变量
     window.__POWERED_BY_QIANKUN__ = true
     window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ = app.entry + '/'
+
     const appExports = await execScripts()
     app.bootstrap = appExports.bootstrap
     app.mount = appExports.mount
@@ -40,13 +40,9 @@ export const handleRouter = async () => {
         app.bootstrap && (await app.bootstrap())
     }
     async function mount(app) {
-        app.mount && (await app.mount({
-            container: document.querySelector(app.container)
-        }))
+        app.mount && (await app.mount({container}))
     }
     async function unmount(app) {
-        app.unmount && (await app.unmount({
-            container: document.querySelector(app.container)
-        }))
+        app.unmount && (await app.unmount({container}))
     }
 }
