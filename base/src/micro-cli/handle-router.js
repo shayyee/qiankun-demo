@@ -40,9 +40,16 @@ export const handleRouter = async () => {
         app.bootstrap && (await app.bootstrap())
     }
     async function mount(app) {
-        app.mount && (await app.mount({container}))
+        let container = document.querySelector(app.container)
+        app.mount && (await app.mount({
+            container
+        }))
     }
     async function unmount(app) {
-        app.unmount && (await app.unmount({container}))
+        let container = document.querySelector(app.container)
+        app.unmount && (await app.unmount({
+            container
+        }))
+        container.innerHTML = ''
     }
 }
